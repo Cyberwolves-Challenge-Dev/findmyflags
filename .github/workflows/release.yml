@@ -10,7 +10,7 @@ jobs:
     name: Build and upload to release for ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
-	# needed for uploading to release
+    # needed for uploading to release
     permissions:
       contents: write
 
