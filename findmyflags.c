@@ -144,5 +144,3 @@ int main() {
 
 	return 0;
 }
-
-// gcc ../utils/base64.c ../utils/md5.c findmyflags.c -o findmyflags
