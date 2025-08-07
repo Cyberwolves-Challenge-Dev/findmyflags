@@ -1,0 +1,54 @@
+name: Build and Release
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    name: Build and release for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: write
+
+    strategy:
+      # Do not cancel other jobs when one fails
+      fail-fast: false
+      # Build for every OS
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: findmyflags
+            asset_name: findmyflags-linux-amd64
+          - os: windows-latest
+            artifact_name: findmyflags.exe
+            asset_name: findmyflags-windows-amd64.exe
+          - os: macos-latest
+            artifact_name: findmyflags
+            asset_name: findmyflags-macos-amd64
+          - os: ubuntu-latest-arm64
+            artifact_name: findmyflags
+            asset_name: findmyflags-macos-arm64
+          - os: windows-latest-arm64
+            artifact_name: findmyflags.exe
+            asset_name: findmyflags-macos-arm64.exe
+          - os: macos-latest-arm64
+            artifact_name: findmyflags
+            asset_name: findmyflags-macos-arm64
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v4
+
+    - name: Build
+      run: gcc base64.c md5.c findmyflags.c -o findmyflags
+
+    - name: Upload to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ${{ matrix.artifact_name }}
+        asset_name: ${{ matrix.asset_name }}
+        tag: ${{ github.ref }}
