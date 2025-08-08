@@ -33,7 +33,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build
-      run: gcc base64.c md5.c findmyflags.c -o findmyflags -g2 -Og -gdwarf-4
+      run: gcc base64.c md5.c findmyflags.c -o findmyflags -g2 -Og -gdwarf-4 -fno-stack-protector
 
     - name: Upload to release
       uses: svenstaro/upload-release-action@v2
