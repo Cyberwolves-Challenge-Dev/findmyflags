@@ -36,7 +36,7 @@ The steps below are a condensed version of those in the **Getting Started With G
 
 You should see a bunch of C code in the Decompile pane on the right half of the screen. The `main` function is where the program starts, and we are now ready to pick apart its internal workings.
 
-## Reverse-Engineering
+## Reverse Engineering
 
 We can see that this `main` function is full of blocks that look like:
 
