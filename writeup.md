@@ -8,7 +8,7 @@ This challenge serves as a demo of various flag-obfuscation techniques commonly 
 ## Initial Observations
 
 > [!NOTE]
-> There are three binaries available - for Windows, macOS, and Linux. Download the one corresponding to your operating system. They should all run the same, but Ghidra might decompile them slightly differently. This writeup uses the Linux binary (`findmyflags-linux`), as most NCL challenges typically use Linux binaries.
+> There are three binaries available - for Windows, macOS, and Linux. Download the one corresponding to your operating system. They should all run the same, but Ghidra might decompile them slightly differently. This writeup uses the Linux binary (`findmyflags-linux`), as NCL challenges typically use Linux binaries.
 
 Let's start by running our binary and observing its behavior:
 
