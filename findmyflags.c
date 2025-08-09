@@ -57,25 +57,28 @@ void flag_4(char* input) {
 }
 
 void flag_5(char* input) {
-	char flag[14] = {67,83,85,45,83,76,69,78,45,57,54,55,55,0};
-	if (strcmp(input, flag) != 0) fail();
+	char to_xor[14] = "YIO7IV_T7#,--";
+	for (int i = 0; i < 13; i++) {
+		to_xor[i] ^= 0x1A;
+	}
+	if (memcmp(input, to_xor, 13) != 0) fail();
 }
 
 void flag_6(char* input) {
-	char to_xor[14] = {21,5,3,123,5,26,19,24,123,98,99,96,101,86};
-	for (int i = 0; i < sizeof(to_xor); i++) {
-		to_xor[i] ^= 86;
+	char to_xor[13] = {0,16,22,110,16,15,6,13,110,119,118,117,112};
+	for (int i = 0; i < 13; i++) {
+		to_xor[i] ^= 0x43;
 	}
-	if (strcmp(input, to_xor) != 0) fail();
+	if (memcmp(input, to_xor, 13) != 0) fail();
 }
 
 void flag_7(char* input) {
-	char to_subtract_and_xor[14] = {153,169,171,67,169,164,155,166,67,76,76,77,75,88};
-	for (int i = 0; i < sizeof(to_subtract_and_xor); i++) {
-		to_subtract_and_xor[i] -= 55;
-		to_subtract_and_xor[i] ^= 33;
+	char to_xor_add[14] = "XHN6HQ^W6)),.";
+	for (int i = 0; i < 13; i++) {
+		to_xor_add[i] ^= 0x1A;
+		to_xor_add[i] += 1;
 	}
-	if (strcmp(input, to_subtract_and_xor) != 0) fail();
+	if (memcmp(input, to_xor_add, 13) != 0) fail();
 }
 
 void secret_flag(char* input) {
