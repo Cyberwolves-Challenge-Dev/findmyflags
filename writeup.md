@@ -10,7 +10,7 @@ This challenge serves as a demo of various flag-hiding techniques commonly prese
 
 First, start Ghidra and open a new or existing project. Then, import your `findmyflags-<os>` binary. As a reminder, you can do this either by dragging the binary itself from File Explorer to the Ghidra Active Project window or by pressing `I` on your keyboard while the window is in focus.
 
-After you have done this, open the imported binary in the CodeBrowser by dragging its item from the project list to the icon of the dragon in the Tool Chest. It will ask you if you would like to analyze; click Yes and then Analyze. It may then ask you if you would like to go to the `main` symbol; click Yes if so.
+After you have done this, open the imported binary in the CodeBrowser by dragging its item from the project list to the icon of the dragon in the Tool Chest. It will ask you if you would like to analyze; click Yes and then Analyze. It may then ask you if you would like to go to the `main` symbol; click Yes if it does.
 
 Now let us turn our attention to the Decompile pane (the one containing C code). We will mostly be paying attention to this pane as we reverse-engineer the program. Currently, it should be displaying the `main` function. Most programs run starting from the top of `main` going down, exiting when `main` reaches its end. A cursory examination shows us that this `main` function is full of structures such as:
 
