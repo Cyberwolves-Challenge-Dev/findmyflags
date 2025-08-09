@@ -173,5 +173,5 @@ As a hint, CyberChef has an ADD operation, which you can use to add to each byte
 Hope you enjoyed! Here's a list of some good things to keep in mind when doing challenges like these.
 
 - Knowing a programming language is quite helpful for these types of challenges, but you can absolutely figure out how things work through research. Even if you know programming, you'll still need to do a lot of research. Never be afraid to look things up, especially functions or sections of code you don't understand!
-- Obfuscation and noise go hand-in-hand. Look for patterns and focus on what's important, see past the noise.
+- Obfuscation and noise go hand in hand. Look for patterns and focus on what's important; see past the noise.
 - CyberChef is full of awesome stuff to help with decoding things. And lots more.
