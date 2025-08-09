@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 void fail() {
-	printf("\nIncorrect flag :(");
+	printf("\nIncorrect flag :(\n");
 	exit(1);
 }
 
@@ -137,7 +137,7 @@ int main() {
 		secret_flag(user_input);
 	}
 
-	printf("\nCongrats! You made it to the end!");
+	printf("\nCongrats! You made it to the end!\n");
 
 	return 0;
 }
