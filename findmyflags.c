@@ -1,8 +1,5 @@
 #include "base64.h"
 #include "md5.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 void fail() {
 	printf("\nIncorrect flag :(\n");
@@ -89,12 +86,9 @@ void secret_flag(char* input) {
 }
 
 void get_user_input(char* output_buffer, size_t output_buffer_length) {
-	FILE* terminal_input = stdin;
-	fgets(output_buffer, output_buffer_length, terminal_input);
-	size_t newline_location_to_remove = strcspn(output_buffer, "\n");
-	output_buffer[newline_location_to_remove] = 0;
-	size_t carriage_return_location_to_remove = strcspn(output_buffer, "\n");
-	output_buffer[carriage_return_location_to_remove] = 0;
+	fgets(output_buffer, output_buffer_length, stdin);
+	output_buffer[strcspn(output_buffer, "\n")] = 0;
+	output_buffer[strcspn(output_buffer, "\r")] = 0;
 }
 
 int main() {
