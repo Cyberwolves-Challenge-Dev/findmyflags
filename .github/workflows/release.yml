@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Delete current binaries release
-        run: gh release delete Binaries --yes --cleanup-tag
+        run: gh release delete Binaries --yes --cleanup-tag --ignore-if-not-found
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
