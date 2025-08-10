@@ -1,14 +1,29 @@
-name: Build and Upload to Release
+name: Update binaries release
 
-on:
-  release:
-    types:
-      - created
+on: workflow_dispatch
 
 jobs:
-  release:
-    name: Build and upload to release for ${{ matrix.os }}
+  recreate_release:
+    name: Recreate binaries release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Delete current binaries release
+        run: gh release delete Binaries --yes --cleanup-tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create new binaries release
+        run: gh release create Binaries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build_and_upload:
+    name: Build and upload to binaries release for ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    needs: recreate_release
 
     # needed for uploading to release
     permissions:
@@ -29,16 +44,16 @@ jobs:
             asset_name: findmyflags-macos
 
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v4
+      - name: Checkout the repo
+        uses: actions/checkout@v4
 
-    - name: Build
-      run: gcc base64.c md5.c findmyflags.c -o findmyflags -g2 -Og -gdwarf-4 -fno-stack-protector
+      - name: Build
+        run: gcc base64.c md5.c findmyflags.c -o findmyflags -g2 -Og -gdwarf-4 -fno-stack-protector
 
-    - name: Upload to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ${{ matrix.artifact_name }}
-        asset_name: ${{ matrix.asset_name }}
-        tag: ${{ github.ref }}
+      - name: Upload to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.asset_name }}
+          tag: Binaries
