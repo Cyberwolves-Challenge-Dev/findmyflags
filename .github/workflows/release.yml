@@ -19,6 +19,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Wait 5 seconds
+        run: sleep 5
+
       - name: Create new binaries release
         run: gh release create Binaries --title Binaries
         env:
