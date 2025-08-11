@@ -20,7 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create new binaries release
-        run: gh release create Binaries
+        run: gh release create Binaries --title Binaries
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
